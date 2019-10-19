@@ -22,7 +22,7 @@ public class TaskCbmrOne {
 	}
 
 	@When("the user navigates to home page and fill the text boxes and submit")
-	public void the_user_navigates_to_home_page_and_fill_the_text_boxes_and_submit(io.cucumber.datatable.DataTable dataTable) {
+	public void the_user_navigates_to_home_page_and_fill_the_text_boxes_and_submit(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
 		List<String> A = dataTable.asList(String.class);
 		driver.findElement(By.xpath("//label[text()='Done']")).click();
 		driver.findElement(By.id("fname")).sendKeys(A.get(0));
@@ -30,6 +30,7 @@ public class TaskCbmrOne {
 		driver.findElement(By.id("email")).sendKeys(A.get(2));
 		driver.findElement(By.name("addr")).sendKeys(A.get(3));
 		driver.findElement(By.id("telephoneno")).sendKeys(A.get(4));
+		Thread.sleep(10000);
 		driver.findElement(By.name("submit")).click();
 	}
 
